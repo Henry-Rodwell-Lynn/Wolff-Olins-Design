@@ -87,6 +87,7 @@ export function FiberContainer() {
           </ul>
         </div>
       </div>
+      <a className="absolute text-white text-2xl m-2 w-1/5 bottom-0 mix-blend-difference">Rendered in real time using a custom shader. <br></br>Feel free to zoom and play around with various colour combinations.</a>
       <Canvas camera={{ position: [30, 4, 0], fov: 15 }} shadows>
         <Scene colors={colors} brightnessThresholds={brightnessThresholds} />
         <OrbitControls

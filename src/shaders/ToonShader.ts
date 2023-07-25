@@ -10,7 +10,7 @@ export const ToonShader = {
     brightnessThresholds: {
       value: [0.95, 0.35, 0.0],
     },
-    lightPosition: { value: new Vector3(15, 15, 15) },
+    lightPosition: { value: new Vector3(15, 5, 15) },
   },
 
   vertexShader: /* glsl */ `

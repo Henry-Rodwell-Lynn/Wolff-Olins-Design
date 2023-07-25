@@ -1,13 +1,13 @@
-import { FiberContainer } from "./FiberContainer"
+import { FiberContainer } from "./FiberContainer";
 
 function App() {
   return (
     <>
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-hidden">
         <FiberContainer />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

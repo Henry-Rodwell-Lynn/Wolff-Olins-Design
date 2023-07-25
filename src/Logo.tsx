@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Color } from "three";
 import { ToonShader } from "./shaders/ToonShader";
@@ -11,7 +11,8 @@ interface LogoProps {
 
 export const Logo = forwardRef<any, LogoProps>((props, ref) => {
   const { nodes, animations } = useGLTF("./WO3.glb") as any;
-  const { actions } = useAnimations(animations, ref);
+  const meshRef = useRef(null);  
+  const { actions } = useAnimations(animations, meshRef);
 
   useEffect(() => {
     ToonShader.uniforms.colorMap.value = props.colors.map(
@@ -21,13 +22,13 @@ export const Logo = forwardRef<any, LogoProps>((props, ref) => {
   }, [props.colors, props.brightnessThresholds]);
 
   useEffect(() => {
-    actions.OlinsAction.play();
-    actions.WolffAction.play();
+    actions.OlinsAction!.play();
+    actions.WolffAction!.play();
   });
 
   return (
     <group ref={ref} {...props} dispose={null}>
-      <group name="Scene" rotation={[0, 1.6, 0]}>
+      <group ref={meshRef} name="Scene" rotation={[0, 1.6, 0]}>
         <mesh
           name="Olins"
           castShadow
